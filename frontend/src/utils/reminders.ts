@@ -12,7 +12,8 @@ export function reminderState(item: ReminderItem, now = Date.now()) {
 }
 
 export function formatReminderPercent(fractionLeft: number) {
-  return String(Math.floor(Math.max(0, Math.min(1, fractionLeft)) * 100));
+  const clamped = Math.max(0, Math.min(1, fractionLeft));
+  return String(clamped > 0 ? Math.max(1, Math.floor(clamped * 100)) : 0);
 }
 
 export function formatReminderCountdown(item: ReminderItem, isZh: boolean, now = Date.now()) {

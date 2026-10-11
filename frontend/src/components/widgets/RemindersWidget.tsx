@@ -66,7 +66,7 @@ export const RemindersWidget: React.FC<{ size: WidgetSize; config?: RemindersWid
                 <span className="truncate">{formatReminderCountdown(item, isZh, now)}</span>
                 <span className="shrink-0">{formatReminderPercent(state.fractionLeft)}%</span>
               </div>
-              <div role="progressbar" aria-label={isZh ? '剩余时间' : 'Time remaining'} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(state.fractionLeft * 100)} className="h-1.5 rounded-full bg-white/15 overflow-hidden"><div className="h-full rounded-full transition-all duration-1000 ease-linear" style={{ width: `${state.fractionLeft * 100}%`, background: color }} /></div>
+              <div role="progressbar" aria-label={isZh ? '剩余时间' : 'Time remaining'} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Number(formatReminderPercent(state.fractionLeft))} className="h-1.5 rounded-full bg-white/15 overflow-hidden"><div className="h-full rounded-full transition-all duration-1000 ease-linear" style={{ width: `${state.fractionLeft * 100}%`, minWidth: state.remaining > 0 ? 6 : 0, background: color }} /></div>
             </div>}
           </div>;
         })}
